@@ -1,15 +1,24 @@
 import { userRouter } from './routes/userRoutes';
-import sequelize from './1config/database';
+import sequelize from './config/database';
 import dealsRoutes from './routes/dealRoutes';
 import customersRoutes from './routes/customerRoutes';
 import todosRoutes from './routes/todoRoutes';
 import express from 'express';
+import cors from 'cors';
 import { graphqlHTTP } from 'express-graphql';
 import schema from './graphql/schema';
 import { resolvers } from './graphql/resolvers';
 
-const app = express();
 
+const app = express();
+const corsOptions = {
+  origin: 'http://localhost:3001',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use('/api', userRouter);
 app.use('/api', dealsRoutes);
@@ -29,14 +38,6 @@ app.use('/graphql', graphqlHTTP({
   rootValue: resolvers,
   graphiql: true, // Enable GraphiQL interface for testing
 }));
-
-// Add your routes here
-
-
-
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
-});
 
 export default app;
 

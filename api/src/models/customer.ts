@@ -1,7 +1,8 @@
+import e from "express";
 import { Table, Column, Model, DataType } from "sequelize-typescript";
 
 @Table
-export class Customer extends Model {
+class Customer extends Model {
   @Column({
     primaryKey: true,
     type: DataType.UUID,
@@ -18,3 +19,5 @@ export class Customer extends Model {
   @Column({ type: DataType.STRING })
   avatar?: string;
 }
+
+export default Customer;

@@ -1,8 +1,8 @@
 import { Table, Column, Model, DataType, ForeignKey, BelongsTo } from 'sequelize-typescript';
-import { Customer } from './customer';
+import Customer from './customer';
 
 @Table
-export class Deal extends Model {
+class Deal extends Model {
   @Column({ primaryKey: true, type: DataType.UUID, defaultValue: DataType.UUIDV4 })
   id!: string;
 
@@ -37,3 +37,5 @@ export class Deal extends Model {
   @Column({ type: DataType.INTEGER, allowNull: false })
   numOfPeople!: number;
 }
+
+export default Deal;

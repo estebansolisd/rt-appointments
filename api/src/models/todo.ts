@@ -1,7 +1,7 @@
 import { Table, Column, Model, DataType } from 'sequelize-typescript';
 
 @Table
-export class Todo extends Model {
+class Todo extends Model {
   @Column({ primaryKey: true, type: DataType.UUID, defaultValue: DataType.UUIDV4 })
   id!: string;
 
@@ -14,3 +14,5 @@ export class Todo extends Model {
   @Column({ type: DataType.ENUM('Pending', 'In Progress', 'Completed'), allowNull: false })
   status!: 'Pending' | 'In Progress' | 'Completed';
 }
+
+export default Todo;

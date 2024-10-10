@@ -16,6 +16,7 @@ const schema = buildSchema(`
 
   type Query {
     getDeal(id: String!): Deal
+    recentDeals(limit: Int!): [Deal]
   }
 
   input DealInput {

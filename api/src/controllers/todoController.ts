@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Todo } from "../models/Todo";
+import Todo from "../models/todo";
 
 export const getTodos = async (req: Request, res: Response) => {
   const todos = await Todo.findAll();
